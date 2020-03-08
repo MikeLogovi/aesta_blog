@@ -1,0 +1,6 @@
+[
+    {"id":1,"title": "First post","author":"mike","content":"This in our first post","created_at":"03/03/2019"},
+    {"id":2,"title": "Second post","author":"Said","content":"This in our second post","created_at":"04/03/2019"},
+    {"id":3,"title": "Third post","author":"Freddy","content":"This in our third post","created_at":"05/03/2019"},
+    {"id":4,"title": "Fourth post","author":"Samuel","content":"This in our fourth post","created_at":"06/03/2019"}
+]
