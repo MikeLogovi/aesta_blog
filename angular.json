@@ -84,7 +84,8 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "aestaFrontend:build:production"
+              "browserTarget": "aestaFrontend:build:production",
+              "proxyConfig": "src/proxy.conf.json"
             }
           }
         },

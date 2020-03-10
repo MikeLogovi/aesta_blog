@@ -8,13 +8,28 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ArticleService } from './article.service';
 import { CategoryComponent } from './category/category.component';
+import {Globals} from './globals';
+import { SideComponent } from './side/side.component';
+import { NticComponent } from './ntic/ntic.component';
+import { SanteComponent } from './sante/sante.component';
+import { SpirituelComponent } from './spirituel/spirituel.component';
+import { EducationComponent } from './education/education.component';
+import { EntreprenariatComponent } from './entreprenariat/entreprenariat.component';
+import { AncienComponent } from './ancien/ancien.component'
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
     FooterComponent,
     routingComponents,
-    CategoryComponent
+    CategoryComponent,
+    SideComponent,
+    NticComponent,
+    SanteComponent,
+    SpirituelComponent,
+    EducationComponent,
+    EntreprenariatComponent,
+    AncienComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +37,7 @@ import { CategoryComponent } from './category/category.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [ArticleService],
+  providers: [ArticleService,Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
