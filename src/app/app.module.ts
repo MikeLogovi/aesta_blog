@@ -15,7 +15,16 @@ import { SanteComponent } from './sante/sante.component';
 import { SpirituelComponent } from './spirituel/spirituel.component';
 import { EducationComponent } from './education/education.component';
 import { EntreprenariatComponent } from './entreprenariat/entreprenariat.component';
-import { AncienComponent } from './ancien/ancien.component'
+import { AncienComponent } from './ancien/ancien.component';
+import { BannerComponent } from './banner/banner.component';
+import { DepartmentComponent } from './department/department.component';
+import { DepartmentHeaderComponent } from './department-header/department-header.component'
+import {DepartmentService} from './department.service';
+import { DeparticleComponent } from './departicle/departicle.component';
+import { AproposComponent } from './apropos/apropos.component';
+import { ArticleDetailComponent } from './article-detail/article-detail.component';
+import { SearchComponent } from './search/search.component';
+import { TesComponent } from './tes/tes.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +38,15 @@ import { AncienComponent } from './ancien/ancien.component'
     SpirituelComponent,
     EducationComponent,
     EntreprenariatComponent,
-    AncienComponent
+    AncienComponent,
+    BannerComponent,
+    DepartmentComponent,
+    DepartmentHeaderComponent,
+    DeparticleComponent,
+    AproposComponent,
+    ArticleDetailComponent,
+    SearchComponent,
+    TesComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +54,7 @@ import { AncienComponent } from './ancien/ancien.component'
     FormsModule,
     HttpClientModule
   ],
-  providers: [ArticleService,Globals],
+  providers: [ArticleService,DepartmentService,Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

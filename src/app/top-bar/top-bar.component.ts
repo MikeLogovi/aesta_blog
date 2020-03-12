@@ -14,7 +14,7 @@ export class TopBarComponent implements OnInit {
   constructor(private _articles :  ArticleService) { }
 
   ngOnInit() {
-      this._articles.getArticle().subscribe(data=>this.articles=data);
+      //this._articles.getArticle().subscribe(data=>this.articles=data);
   }
   send(){
     this.childVal.emit('coucou mike');
