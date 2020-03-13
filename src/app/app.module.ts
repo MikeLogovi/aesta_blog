@@ -25,6 +25,12 @@ import { AproposComponent } from './apropos/apropos.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { SearchComponent } from './search/search.component';
 import { TesComponent } from './tes/tes.component'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import 'angular-notifier/styles.css'
+import {NgxPaginationModule} from 'ngx-pagination'
+
+
+import { SimpleNotificationsModule } from 'angular2-notifications';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +58,10 @@ import { TesComponent } from './tes/tes.component'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SimpleNotificationsModule.forRoot(),
+    BrowserAnimationsModule,
+    NgxPaginationModule
   ],
   providers: [ArticleService,DepartmentService,Globals],
   bootstrap: [AppComponent]

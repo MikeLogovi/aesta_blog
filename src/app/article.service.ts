@@ -19,4 +19,11 @@ export class ArticleService {
       getPopularArticles(){
         return this.http.get(this.globals.backendEndpoint()+'/api/articles/popular').toPromise()
       }
+      downloadPdf(id){
+        this.http.get(this.globals.backendEndpoint()+'/api/articles/download_pdf/'+id).toPromise().then(data=>{
+            console.log('Bravo')
+        }).catch(error=>{
+          console.log(error)
+        })
+      }
 }

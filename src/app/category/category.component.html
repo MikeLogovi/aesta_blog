@@ -10,33 +10,38 @@
                 <!-- Start Post Area -->
                 <section class="post-area">
                     <div class="row">
-                        <div class="col-lg-6 col-md-6" *ngFor="let article of category.articles">
+                        <div class="col-lg-6 col-md-6" *ngFor="let article of category.articles|paginate:config|keyvalue">
                             <div class="single-post-item short">
                                 <figure>
-                                    <img class="post-img img-fluid" style="width:100%;height:300px;" src="{{globals.backendEndpoint()}}/storage/{{article.picture}}" alt="">
+                                    <img class="post-img img-fluid" style="width:100%;height:300px;" src="{{globals.backendEndpoint()}}/storage/{{article.value.picture}}" alt="">
                                 </figure>
                                 <h3>
-                                    <a routerLink="/department-{{article.department.slug}}/article/{{article.slug}}">{{article.title}}</a>
+                                    <a routerLink="/department-{{article.value.department.slug}}/article.value/{{article.value.slug}}">{{article.value.title}}</a>
                                 </h3>
-                                <p>{{article.description}}</p>
-                                <a routerLink="/department-{{article.department.slug}}/article/{{article.slug}}" class="primary-btn text-uppercase mt-15">CONTINUER LA LECTURE</a>
+                                <p>{{article.value.description}}</p>
+                                <a routerLink="/department-{{article.value.department.slug}}/article.value/{{article.value.slug}}" class="primary-btn text-uppercase mt-15">CONTINUER LA LECTURE</a>
                                 <div class="post-box">
                                     <div class="d-flex">
                                         <div>
                                             <a href="#">
-                                                <img style="width:100px;height:60px" src="{{globals.backendEndpoint()}}/storage/{{article.user.picture}}" alt="">
+                                                <img style="width:100px;height:60px" src="{{globals.backendEndpoint()}}/storage/{{article.value.user.picture}}" alt="">
                                             </a>
                                         </div>
                                         <div class="post-meta">
                                             <div class="meta-head">
-                                                <a href="#">{{article.user.name}}</a>
+                                                <a href="#">{{article.value.user.name}}</a>
                                             </div>
                                             <div class="meta-details">
                                                 <ul>
                                                     <li>
+                                                        
+                                                            <span class="lnr lnr-book book" c (click)="downloadPdf(article.value.id)"></span>
+                                                        
+                                                    </li>
+                                                    <li>
                                                         <a href="#">
                                                             <span class="lnr lnr-calendar-full"></span>
-                                                            {{article.created_at|date:'d/M/y'}}
+                                                            {{article.value.created_at|date:'d/M/y'}}
                                                         </a>
                                                     </li>
                                                 
@@ -48,29 +53,7 @@
                             </div>
                         </div>
                         <div class="col-lg-12">
-                            <nav class="blog-pagination justify-content-center d-flex">
-                                <ul class="pagination">
-                                    <li class="page-item">
-                                        <a href="#" class="page-link" aria-label="Previous">
-                                            <span aria-hidden="true">
-                                                <span class="lnr lnr-arrow-left"></span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a href="#" class="page-link">01</a></li>
-                                    <li class="page-item active"><a href="#" class="page-link">02</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">03</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">04</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">09</a></li>
-                                    <li class="page-item">
-                                        <a href="#" class="page-link" aria-label="Next">
-                                            <span aria-hidden="true">
-                                                <span class="lnr lnr-arrow-right"></span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            <pagination-controls (pageChange)="pagechange($event)"></pagination-controls>
                         </div>
                     </div>
                 </section>

@@ -28,7 +28,7 @@ const routes: Routes = [
   {path:'department-sante/article/:slug',component:ArticleDetailComponent},
   {path:'department-spirituel',component:SpirituelComponent},
   {path:'department-spirituel/article/:slug',component:ArticleDetailComponent},
-  {path:'department-entreprenarial',component:ArticleDetailComponent},
+  {path:'department-entreprenarial',component:EntreprenariatComponent},
   {path:'department-entreprenarial/article/:slug',component:ArticleDetailComponent},
   {path:'department-ancien',component:AncienComponent},
   {path:'department-ancien/article/:slug',component:ArticleDetailComponent},
