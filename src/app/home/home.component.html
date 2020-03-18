@@ -1,7 +1,8 @@
 <!-- Start banner Area -->
 <section class="banner-area">
+    <div class="overlay overlay-bg"></div>
     <div class="container box_1170">
-        <div class="row fullscreen d-flex align-items-center justify-content-center">
+        <div class="row d-flex align-items-center justify-content-center" style="height:100vh;" >
             
             <div class="banner-content text-center col-lg-8">
                 
@@ -10,7 +11,10 @@
                     Association Des Etudiants Et Stagiaires <br>
                     Togolais en Algerie
                 </h1>
-               
+                <div class="container search-box">
+                    <input type="text" placeholder="Rechercher..." (keyup.enter)="searching()" [(ngModel)]="search">
+                    <div class="search "></div>
+                  </div>
             </div>
             
         </div>
@@ -19,79 +23,89 @@
 <!-- End banner Area -->
 
 <!-- Start Post Silder Area -->
-<section class="post-slider-area">
+<section class="post-slider-area" *ngIf="articleSliders">
     <div class="container box_1170">
         <div class="row justify-content-center">
             <div class="col-lg-10">
-                <div class="owl-carousel active-post-carusel">
-
-                    <div class="post-box mb-30" *ngFor="let slide of articleSliders">
-                        <div class="d-flex">
-                            <div>
+                <owl-carousel [options]="mySlideOptions" [items]="articleSliders" [carouselClasses]="['owl-theme', 'sliding']" >
+                 
+                    <div class="post-box mb-30"  *ngFor="let slide of articleSliders">
+                        <div class="d-flex" *ngIf="slide.department">
+                            <div  *ngIf="slide.picture;else elsebloc">
                                 <a href="#">
-                                    <img width=100 height=60 src="{{backendEndpoint()}}/storage/{{slide[0].picture}}" alt="">
+                                    <img  width=100 height=60 src="{{backendEndpoint()}}/storage/{{slide.picture}}" alt="">
                                 </a>
                             </div>
+                            <ng-template #elsebloc>
+                                <a href="#">
+                                    <img #elsebloc width=100 height=60 src="{{slide.picture_link}}" alt="">
+                                </a>
+                            </ng-template>
                             <div class="post-meta">
                                 <div class="meta-head">
-                                    <a href="#">{{slide[0].user.name}}</a>
+                                    <a href="#">{{slide.user.name}}</a>
                                 </div>
                                 <div class="meta-details">
                                     <ul>
                                         <li>
                                             <a href="#">
                                                 <span class="lnr lnr-calendar-full"></span>
-                                                {{slide[0].created_at|date:'d/M/y'}}
+                                                {{slide.created_at|date:'d/M/y'}}
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <span class="lnr lnr-picture"></span>
-                                                {{slide[0].department.name}}
+                                                {{slide.department.name}}
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <span class="lnr lnr-coffee-cup"></span>
-                                                {{slide[0].category.name}}
+                                                {{slide.category.name}}
                                             </a>
                                         </li>
-                                      
+                                        <li>
+                                            <a href="{{slide.pdf_link}}">
+                                                <span class="lnr lnr-download"></span>
+                                                PDF
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <p>{{slide[0].description}}.</p>
-                        <div class="post-btn">
-                            <a href="#" class="primary-btn text-uppercase">Lire plus</a>
+                        <p>{{slide.description}}.</p>
+                        <div class="post-btn" >
+                            <a routerLink="/department-{{slide.department.slug}}/article/{{slide.slug}}" class="primary-btn text-uppercase">Lire plus</a>
                         </div>
                     </div>
-                </div>
+                </owl-carousel>
             </div>
         </div>
     </div>
    
 </section>
 <div class="main-body section-gap mt--30">
-    <div class="container box_1170">
+    <div class="container">
         <div class="row">
             <div class="col-lg-8 post-list">
                 <!-- Start Post Area -->
-                <section class="post-area">
+                <section class="post-area carou">
                     <div class="single-post-item" *ngFor="let article of articles">
                         <figure>
-                            <img class="post-img img-fluid" style="width:100%; height:400px" src="{{backendEndpoint()}}/storage/{{article.picture}}" alt="">
+                            <img class="post-img img-fluid" style="width:100%; height:400px" src="{{article.picture_link}}" alt="">
                         </figure>
                         <h3>
-                            <a href="blog-details.html">{{article.title}}</a>
+                            <a routerLink="/department-{{article.department.slug}}/article/{{article.slug}}">{{article.title}}</a>
                         </h3>
                         <p>{{article.description}}</p>
-                        <a href="blog-details.html" class="primary-btn text-uppercase mt-15">CONTINUER LA LECTURE</a>
+                        <a routerLink="/department-{{article.department.slug}}/article/{{article.slug}}" class="primary-btn text-uppercase mt-15">CONTINUER LA LECTURE</a>
                         <div class="post-box">
                             <div class="d-flex">
                                 <div>
                                     <a href="#">
-                                        <img height=60 width=100 src="{{backendEndpoint()}}/storage/{{article.user.picture}}" alt="">
+                                        <img height=60 width=100 src="{{article.user.picture_link}}" alt="">
                                     </a>
                                 </div>
                                 <div class="post-meta">
@@ -134,3 +148,6 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    
+  </script>

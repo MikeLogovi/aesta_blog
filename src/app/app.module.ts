@@ -28,14 +28,14 @@ import { TesComponent } from './tes/tes.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'angular-notifier/styles.css'
 import {NgxPaginationModule} from 'ngx-pagination'
-
-
 import { SimpleNotificationsModule } from 'angular2-notifications';
+import { OwlModule } from 'ngx-owl-carousel';
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
     FooterComponent,
+    
     routingComponents,
     CategoryComponent,
     SideComponent,
@@ -52,7 +52,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
     AproposComponent,
     ArticleDetailComponent,
     SearchComponent,
-    TesComponent
+    TesComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +61,8 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
     HttpClientModule,
     SimpleNotificationsModule.forRoot(),
     BrowserAnimationsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    OwlModule
   ],
   providers: [ArticleService,DepartmentService,Globals],
   bootstrap: [AppComponent]

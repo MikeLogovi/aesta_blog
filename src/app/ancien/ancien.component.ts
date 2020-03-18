@@ -18,7 +18,7 @@ export class AncienComponent implements OnInit {
   constructor(private http:HttpClient,private departmentService:DepartmentService,private globals:Globals) { }
 
   ngOnInit() {
-      this.departmentService.serve('anciens').then(data=>{
+      this.departmentService.serve('ancien').then(data=>{
         this.department=data
         console.log(this.department)
       })
